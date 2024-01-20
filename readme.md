@@ -5,6 +5,11 @@
 
 # 填入EndPoint (IP+PORT)
 ![image](https://github.com/xuejiazhi/etcdii/assets/16795993/a9e3d786-dbcd-45ec-9330-bad25107465a)
+
+# 增加值
+![image](https://github.com/xuejiazhi/etcdii/assets/16795993/a34ad3d8-314c-4c3b-bd3e-379afcdc9159)
+
+
 ## TODO
 -  Connect ✅
 -  Key List ✅
