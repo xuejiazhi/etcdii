@@ -195,5 +195,62 @@ namespace etcdii
                 }
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var filterStr = textBox6.Text.Trim();
+            var endStr = "";
+
+            if (httpclient.GLOBAL_CONNECT_STATUS == true)
+            {
+                if (filterStr != "")
+                {
+                    try
+                    {
+                        listBox1.Items.Clear();
+                        var filterArr = filterStr.ToCharArray();
+                        for (int i = 0; i < filterArr.Length; i++)
+                        {
+                            if (i == filterArr.Length - 1)
+                            {
+                                var n = Encoding.ASCII.GetBytes(filterArr[i].ToString());
+                                endStr += Convert.ToChar(n[0] + 1);
+                            }
+                            else
+                            {
+                                endStr += filterArr[i];
+                            }
+                        }
+                        var filterKey = "{\"key\": \"" + util.base64Encode(filterStr) + "\",\"range_end\": \"" + util.base64Encode(endStr) + "\"}";
+                        var filterList = httpclient.PostEtcdValue(Operate.AllKeys, filterKey);
+                        EtcdKvRange etcdKvRange = JsonSerializer.Deserialize<EtcdKvRange>(filterList);
+                        if (etcdKvRange.kvs!=null&& etcdKvRange.kvs.Length > 0)
+                        {
+                            foreach (var item in etcdKvRange.kvs)
+                            {
+                                listBox1.Items.Add(util.base64Decode(item.key));
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+                else
+                {
+                    set_All_item();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Connect");
+            }
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
