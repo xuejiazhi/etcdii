@@ -1,4 +1,5 @@
 **做得好玩的一个ETCD GUI工具，后面加上CLI 工具**
+**如果有好的建议可以提一下，可以帮忙动动小手点个赞**
 
 # 下载地址
 ![image](https://github.com/xuejiazhi/etcdii/assets/16795993/cd871869-42a9-4a00-93be-257789c46fe0)
