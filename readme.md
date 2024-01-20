@@ -12,6 +12,9 @@
 # 删除值
 ![image](https://github.com/xuejiazhi/etcdii/assets/16795993/7cff8593-92b8-44a8-85f9-822fe5036392)
 
+# 按前缀过滤
+![image](https://github.com/xuejiazhi/etcdii/assets/16795993/d0c8a97e-846b-4898-92ab-7e79c3e52ada)
+
 ## TODO
 -  Connect ✅
 -  Key List ✅
