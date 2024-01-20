@@ -19,5 +19,5 @@
 -  show Value ✅
 -  Add Key ✅
 -  Filter
--  Remove
+-  Remove✅
 
