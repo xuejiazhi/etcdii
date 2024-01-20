@@ -9,6 +9,8 @@
 # 增加值
 ![image](https://github.com/xuejiazhi/etcdii/assets/16795993/a34ad3d8-314c-4c3b-bd3e-379afcdc9159)
 
+# 删除值
+![image](https://github.com/xuejiazhi/etcdii/assets/16795993/7cff8593-92b8-44a8-85f9-822fe5036392)
 
 ## TODO
 -  Connect ✅
