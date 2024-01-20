@@ -12,6 +12,7 @@ namespace etcdii
         Version,
         AllKeys,
         PutKey,  //插入KEY
+        DeleteRange, //删除
     }
 
 
@@ -74,6 +75,7 @@ namespace etcdii
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 return "";
             }
 
@@ -83,6 +85,7 @@ namespace etcdii
 
         public static string PostEtcdValue(Operate o, string data)
         {
+            //set client
             HttpClient httpClient = new HttpClient();
             HttpContent content = new StringContent(data);
             string urlStr = "";
@@ -93,6 +96,9 @@ namespace etcdii
                     break;
                 case Operate.PutKey:
                     urlStr = String.Format("http://{0}/v3/kv/put", httpclient.GLOBAL_ENDPOINT);
+                    break;
+                case Operate.DeleteRange:
+                    urlStr = String.Format("http://{0}/v3/kv/deleterange", httpclient.GLOBAL_ENDPOINT);
                     break;
                 default:
                     break;
@@ -117,7 +123,6 @@ namespace etcdii
                 Console.WriteLine(ex.ToString());
                 return "";
             }
-            return "";
         }
 
     }

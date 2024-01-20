@@ -77,10 +77,6 @@ namespace etcdii
             //textBox2.Text = getEtcdValue();
         }
 
-       
-
-        
-
         private void button2_Click(object sender, EventArgs e)
         {
             httpclient.GLOBAL_CONNECT_STATUS = false;
@@ -144,8 +140,51 @@ namespace etcdii
 
         private void ChildForm_Addkey(object sender, bool data)
         {
+            set_All_item();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("realy remove？", "remove", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    var selectMsg = util.base64Encode(listBox1.Text.ToString());
+                    var optStr = httpclient.PostEtcdValue(Operate.DeleteRange, "{\"key\": \"" + selectMsg + "\"}");
+                    if (optStr == "")
+                    {
+                        MessageBox.Show("Remove Key Failed");
+                    }
+                    else
+                    {
+                        set_All_item();
+                        MessageBox.Show("Remove Key Success");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    MessageBox.Show("Remove Key Failed");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cancel Remove");
+            }
+        }
+
+        private void listBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(listBox1, e.Location);
+            }
+        }
+
+        private void set_All_item()
+        {
             listBox1.Items.Clear();
-            //set list
             var listStr = httpclient.PostEtcdValue(Operate.AllKeys, "{\"key\": \"AA==\",\"range_end\": \"AA==\"}");
             EtcdKvRange etcdKvRange = JsonSerializer.Deserialize<EtcdKvRange>(listStr);
             if (etcdKvRange.kvs.Length > 0)
@@ -155,11 +194,6 @@ namespace etcdii
                     listBox1.Items.Add(util.base64Decode(item.key));
                 }
             }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

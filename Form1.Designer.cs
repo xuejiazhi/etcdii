@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,7 +48,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeKeyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -134,6 +139,7 @@
             this.listBox1.Size = new System.Drawing.Size(269, 484);
             this.listBox1.TabIndex = 3;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseUp);
             // 
             // textBox2
             // 
@@ -240,6 +246,27 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyValueToolStripMenuItem,
+            this.removeKeyToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
+            this.contextMenuStrip1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseUp);
+            // 
+            // copyValueToolStripMenuItem
+            // 
+            this.copyValueToolStripMenuItem.Name = "copyValueToolStripMenuItem";
+            this.copyValueToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.copyValueToolStripMenuItem.Text = "Copy Value";
+            // 
+            // removeKeyToolStripMenuItem
+            // 
+            this.removeKeyToolStripMenuItem.Name = "removeKeyToolStripMenuItem";
+            this.removeKeyToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.removeKeyToolStripMenuItem.Text = "Remove Key";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -262,6 +289,7 @@
             this.Text = "etcdii";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,6 +315,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyValueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeKeyToolStripMenuItem;
     }
 }
 
