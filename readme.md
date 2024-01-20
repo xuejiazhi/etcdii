@@ -21,6 +21,6 @@
 -  Get Key ✅
 -  show Value ✅
 -  Add Key ✅
--  Filter
+-  Filter ✅
 -  Remove✅
 
